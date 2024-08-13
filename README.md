@@ -33,14 +33,14 @@ Este projeto tem como objetivo o desenvolvimento do backend do classificador par
 
 ## 3 - Instruções:
 ### 3.1 - Inicializando o projeto: 
-    1. Download do repositório: ```https://github.com/NailsonChagas/Sandman---Backend-Classificador.git```
-    2. Acesse o repositório: ```cd Sandman---Backend-Classificador```
-    3. Criar ambiente virtual: ```python3 -m venv venv```
-    4. Abrir ambiente virtual: ```source ./venv/bin/activate```
-    5. Instalar requisitos: ```pip install -r requirements.txt```
+1. Download do repositório: ```https://github.com/NailsonChagas/Sandman---Backend-Classificador.git```
+2. Acesse o repositório: ```cd Sandman---Backend-Classificador```
+3. Criar ambiente virtual: ```python3 -m venv venv```
+4. Abrir ambiente virtual: ```source ./venv/bin/activate```
+5. Instalar requisitos: ```pip install -r requirements.txt```
 
 ### 3.2 - Salvando requisitos:
-    1. Salvar requisitos: ```pip freeze > requirements.txt```
-    2. Adicionar mudança: ```git add requirements.txt```
-    3. Fazer commit: ```git commit -m "update: atualizando requisitos"```
-    4. Subir para o repositório: ```git push -u origin main```
+1. Salvar requisitos: ```pip freeze > requirements.txt```
+2. Adicionar mudança: ```git add requirements.txt```
+3. Fazer commit: ```git commit -m "update: atualizando requisitos"```
+4. Subir para o repositório: ```git push -u origin main```
