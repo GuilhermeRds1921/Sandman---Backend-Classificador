@@ -2,7 +2,7 @@
 Backend do classificador do projeto Sandman da disciplina de Engenharia de Software
 
 ## Rotas de acesso:
-###1. Enviar exame:
+### 1. Enviar exame:
     - Link: /classifier/exam
     - Método: POST
     - Request Body:
