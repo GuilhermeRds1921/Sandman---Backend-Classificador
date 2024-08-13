@@ -3,12 +3,6 @@ Este projeto tem como objetivo o desenvolvimento do backend do classificador par
 
 ## Indice
 1. [O sono](#0---o-sono)
-   1. [Awake](#1---awake)
-   2. [NREM](#2---nrem)
-      1. [N1](#21---n1)
-      2. [N2](#22---n2)
-      3. [N3](#23---n3)
-   3. [REM](#3---rem)
 2. [Informações técnicas](#1---informações-técnicas)
 3. [Rotas de acesso](#2---rotas-de-acesso)
    1. [Enviar exame](#21---enviar-exame)
