@@ -1,6 +1,23 @@
 # Sandman: Backend do Classificador
 Este projeto tem como objetivo o desenvolvimento do backend do classificador para o projeto Sandman, que está sendo realizado na disciplina de Engenharia de Software.
 
+## Indice
+1. [O sono](#0---o-sono)
+   1. [Awake](#1---awake)
+   2. [NREM](#2---nrem)
+      1. [N1](#21---n1)
+      2. [N2](#22---n2)
+      3. [N3](#23---n3)
+   3. [REM](#3---rem)
+2. [Informações técnicas](#1---informações-técnicas)
+3. [Rotas de acesso](#2---rotas-de-acesso)
+   1. [Enviar exame](#21---enviar-exame)
+   2. [Checar se classificação foi concluída / Retornar exame](#22---checar-se-classificação-foi-concluída--retornar-exame)
+   3. [Gerar laudo](#23---gerar-laudo)
+4. [Instruções](#3---instruções)
+   1. [Inicializando o projeto](#31---inicializando-o-projeto)
+   2. [Salvando requisitos](#32---salvando-requisitos)
+
 ## 0 - O sono:
 Informação retirada de [The Functions of Sleep](http://www.aimspress.com/article/10.3934/Neuroscience.2015.3.155), acessado em 18/04/2024
 1. **Awake**: indivíduo está completamente alerta e responsivo ao ambiente. 
