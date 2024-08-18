@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from collections import Counter
 import numpy as np
 import pickle
 import base64
@@ -55,6 +56,21 @@ def __plot_classified_eeg(stages: list[int]):
     buffer.close()
     return img
 
+def __plot_stages_distribution(stages: list[int]):
+    _, ax = plt.subplots(figsize=(10, 6))
+    counter = Counter(stages)
+    ax.bar(counter.keys(), counter.values(), edgecolor="black")
+    plt.xlabel("Estágio do Sono")
+    plt.ylabel("Frequência")
+    plt.xticks([0, 1, 2, 3, 4], ["Acordado", "N1", "N2", "N3", "REM"])
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+    img = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    buffer.close()
+    print(img)
+    return img
+
 def process_job(job_id, jobs: dict):
     job = jobs.get(job_id)
     if job:
@@ -69,7 +85,7 @@ def process_job(job_id, jobs: dict):
         job["plots"] = {
             "eeg_reading_plot": __plot_eeg(job["eeg_reading"]),
             "classified_eeg_reading_plot": __plot_classified_eeg(stages),
-            "sleep_stages_distribution_plot": "sleep_stages_distribution_plot_data"
+            "sleep_stages_distribution_plot": __plot_stages_distribution(stages)
         }
 
         print(f"JOB: {job_id} DONE")
