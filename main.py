@@ -49,13 +49,16 @@ def generate_report():
     data: dict = request.get_json()
     job_id = data.get("job_id")
     notes = data.get("notes")
+    name = data.get("name")
+    technician = data.get("technician")
+    CDEnf = data.get("CDEnf")
     
     job = jobs.get(job_id)
     
     if not job: return jsonify({"error": "Job not found"}), 404
     if not job["classified"]: return jsonify({"error": "Classification not completed"}), 404
     
-    return jsonify({"report_pdf": generate_pdf(job, notes)})
+    return jsonify({"report_pdf": generate_pdf(job, notes, name, technician, CDEnf)})
 
 if __name__ == "__main__":
     app.run(debug=True)
