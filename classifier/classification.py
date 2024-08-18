@@ -31,10 +31,23 @@ def __pre_process_signal(eeg: list[float]):
     return np.array(features)
 
 def __plot_eeg(eeg: list[float]):
-    fig, ax = plt.subplots(figsize=(10, 6))
+    _, ax = plt.subplots(figsize=(10, 6))
     ax.plot(eeg)
     ax.set_xlabel("Tempo (10⁻²s)")
     ax.set_ylabel("Amplitude (µV)")
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+    img = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    buffer.close()
+    return img
+
+def __plot_classified_eeg(stages: list[int]):
+    _, ax = plt.subplots(figsize=(10, 6))
+    ax.step(range(len(stages)), stages, where="post")
+    ax.set_xlabel("Tempo (s)")
+    ax.set_ylabel("Estágio do Sono")
+    plt.yticks([0, 1, 2, 3, 4], ["Acordado", "N1", "N2", "N3", "REM"])
     buffer = io.BytesIO()
     plt.savefig(buffer, format="png")
     buffer.seek(0)
@@ -55,7 +68,7 @@ def process_job(job_id, jobs: dict):
         job["classified_eeg_reading"] = stages
         job["plots"] = {
             "eeg_reading_plot": __plot_eeg(job["eeg_reading"]),
-            "classified_eeg_reading_plot": "classified_eeg_reading_plot_data",
+            "classified_eeg_reading_plot": __plot_classified_eeg(stages),
             "sleep_stages_distribution_plot": "sleep_stages_distribution_plot_data"
         }
 
