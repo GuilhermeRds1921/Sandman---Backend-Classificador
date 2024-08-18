@@ -11,7 +11,7 @@ jobs = {}
 def send_exam():
     data: dict = request.get_json()
     eeg_reading = data.get("eeg_reading")
-    job_id = "715df35e-2e51-4eda-8305-728aa1bf07c0" # str(uuid.uuid4())
+    job_id = str(uuid.uuid4())
 
     job = {
         "eeg_reading": eeg_reading,
