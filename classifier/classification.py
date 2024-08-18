@@ -1,6 +1,9 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+import base64
 import os
+import io
 
 HZ = 100
 MODEL = pickle.load(open(os.path.join(".", "classifier", "knn_model.pkl"), "rb"))
@@ -27,6 +30,18 @@ def __pre_process_signal(eeg: list[float]):
 
     return np.array(features)
 
+def __plot_eeg(eeg: list[float]):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(eeg)
+    ax.set_xlabel("Tempo (10⁻²s)")
+    ax.set_ylabel("Amplitude (µV)")
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    buffer.seek(0)
+    img = base64.b64encode(buffer.getvalue()).decode("utf-8")
+    buffer.close()
+    return img
+
 def process_job(job_id, jobs: dict):
     job = jobs.get(job_id)
     if job:
@@ -39,7 +54,7 @@ def process_job(job_id, jobs: dict):
         job["classified"] = True
         job["classified_eeg_reading"] = stages
         job["plots"] = {
-            "eeg_reading_plot": "eeg_reading_plot_data",
+            "eeg_reading_plot": __plot_eeg(job["eeg_reading"]),
             "classified_eeg_reading_plot": "classified_eeg_reading_plot_data",
             "sleep_stages_distribution_plot": "sleep_stages_distribution_plot_data"
         }
