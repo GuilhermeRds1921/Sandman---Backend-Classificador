@@ -68,8 +68,24 @@ def __plot_stages_distribution(stages: list[int]):
     buffer.seek(0)
     img = base64.b64encode(buffer.getvalue()).decode("utf-8")
     buffer.close()
-    print(img)
     return img
+
+def __stage_table(stages: list[int]):
+    table = [
+        #0  1  2  3  4
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ]
+
+    last_stage = -1
+    for s in stages:
+        if last_stage != -1:
+            table[last_stage][s] += 1
+        last_stage = s
+    return table
 
 def process_job(job_id, jobs: dict):
     job = jobs.get(job_id)
@@ -82,6 +98,7 @@ def process_job(job_id, jobs: dict):
 
         job["classified"] = True
         job["classified_eeg_reading"] = stages
+        job["stage_table"] = __stage_table(stages)
         job["plots"] = {
             "eeg_reading_plot": __plot_eeg(job["eeg_reading"]),
             "classified_eeg_reading_plot": __plot_classified_eeg(stages),

@@ -15,6 +15,7 @@ def send_exam():
     job = {
         "eeg_reading": eeg_reading,
         "classified": False,
+        "stage_table": None,
         "classified_eeg_reading": None,
         "plots": {
             "eeg_reading_plot": None,
@@ -35,6 +36,7 @@ def get_exam(job_id):
     
     return jsonify({
         "done": job["classified"],
+        "stage_table": job["stage_table"],
         "classified_eeg_reading": job["classified_eeg_reading"],
         "eeg_reading_plot": job["plots"]["eeg_reading_plot"],
         "classified_eeg_reading_plot": job["plots"]["classified_eeg_reading_plot"],
