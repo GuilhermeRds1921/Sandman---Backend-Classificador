@@ -29,6 +29,7 @@ Informação retirada de [The Functions of Sleep](http://www.aimspress.com/artic
     - Funções: crucial para a função cognitiva, regulação emocional, consolidação da memória e aprendizado
 
 ## 1 - Informações técnicas:
+- O pacote utilizado para o desenvolvimento das rotas será o Flask
 - O pacote utilizado para o desenvolvimento do classificador será o scikit-learn
 - O pacote utilizado para a plotagem de imagens é o matplotlib em conjunto com o seaborn
 
