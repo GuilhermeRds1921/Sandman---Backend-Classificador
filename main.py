@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from classifier import process_job
+from pdf import generate_pdf
 import threading
 import uuid
 
@@ -54,8 +55,7 @@ def generate_report():
     if not job: return jsonify({"error": "Job not found"}), 404
     if not job["classified"]: return jsonify({"error": "Classification not completed"}), 404
     
-    report_pdf = "Simulated PDF content in Base64: " + notes
-    return jsonify({"report_pdf": report_pdf})
+    return jsonify({"report_pdf": generate_pdf(job, notes)})
 
 if __name__ == "__main__":
     app.run(debug=True)
