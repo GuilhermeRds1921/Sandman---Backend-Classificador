@@ -36,7 +36,7 @@ def get_exam(job_id):
         return jsonify({"error": "Job not found"}), 404
     
     return jsonify({
-        "done": job["classified"],
+        "classified": job["classified"],
         "stage_table": job["stage_table"],
         "classified_eeg_reading": job["classified_eeg_reading"],
         "eeg_reading_plot": job["plots"]["eeg_reading_plot"],

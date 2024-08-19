@@ -45,7 +45,7 @@ Informação retirada de [The Functions of Sleep](http://www.aimspress.com/artic
     - Link: /classifier/exam/<job_id: UUID>
     - Método: GET
     - Response Body:
-      - done: bool 
+      - classified: bool 
       - classified_eeg_reading: array<int>
       - eeg_reading_plot: Base64 (PNG) 
       - classified_eeg_reading_plot: Base64 (PNG)
