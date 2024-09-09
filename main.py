@@ -46,7 +46,7 @@ def get_exam(job_id):
         "sleep_stages_distribution_plot": job["plots"]["sleep_stages_distribution_plot"]
     })
 
-@app.route("/classifier/genMq7q81pcp7p3F3fH1XvW9U9HSp1d3Xv/bsuXbAzs7M1Mz3d9bxPUlRVVUFEREREREREDRVo9AUQEREREREREQN0IiIiIiIiIl9ggE5ERERERETkAwzQiYiIiIiIiHyAAToRERERERGRDzBAJyIiIiIiIvIBBuhEREREREREPsAAnYiIiIiIerate_report", methods=["POST"])
+@app.route("/classifier/generate_report", methods=["POST"])
 def generate_report():
     data: dict = request.get_json()
     job_id = data.get("job_id")
